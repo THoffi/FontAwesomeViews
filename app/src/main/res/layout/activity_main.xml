@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Note the xmlns:custom="http://schemas.android.com/apk/res-auto" -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFBFB"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    android:padding="32sp"
+    tools:context=".MainActivity">
+
+    <de.th.fontawesome.FontAwesomeTextView
+        android:text="@string/fa_address_book"
+        android:textSize="24sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:type="regular"/>
+
+    <!-- Das funzt -->
+    <TextView
+        android:textSize="24sp"
+        android:text="@string/fa_address_book"
+        android:fontFamily="@font/fa_regular_400"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

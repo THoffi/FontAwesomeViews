@@ -1,0 +1,3 @@
+include ':FontAwesome'
+include ':app'
+rootProject.name = "FontAwesomeViews"
