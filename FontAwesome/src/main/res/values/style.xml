@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="fa_regular_400">
+        <item name="android:fontFamily">@font/fa_regular_400</item>
+    </style>
+
+    <style name="fa_brands_400">
+        <item name="android:fontFamily">@font/fa_brands_400</item>
+    </style>
+
+    <style name="fa_solid_900">
+        <item name="android:fontFamily">@font/fa_solid_900</item>
+    </style>
+
+</resources>

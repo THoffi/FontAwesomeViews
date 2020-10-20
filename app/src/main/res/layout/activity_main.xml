@@ -3,7 +3,7 @@
 <!-- Note the xmlns:custom="http://schemas.android.com/apk/res-auto" -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
+
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,12 +13,28 @@
     android:padding="32sp"
     tools:context=".MainActivity">
 
+    <!-- Geht nur wenn compiled -->
     <de.th.fontawesome.FontAwesomeTextView
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
         android:text="@string/fa_address_book"
         android:textSize="24sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         custom:type="regular"/>
+
+    <!-- Das Funzt -->
+    <!-- type = "solid", "regular" or "brand" -->
+    <de.th.fontawesome.FontAwesomeView
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        android:text="@string/fa_bookmark"
+        android:textSize="36sp"
+        android:textColor="#EF073F"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="TEST"
+        custom:type="@string/fas_adjust"
+        />
+
 
     <!-- Das funzt -->
     <TextView
