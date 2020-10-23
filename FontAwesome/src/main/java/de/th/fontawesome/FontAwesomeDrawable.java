@@ -12,10 +12,13 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.text.Html;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.TypedValue;
+
+import androidx.core.content.res.ResourcesCompat;
 
 /*	+++ Beispiel +++
 	FloatingActionButton fab = findViewById(R.id.fab);
@@ -75,12 +78,12 @@ public class FontAwesomeDrawable extends Drawable {
             android.R.attr.textColor
     };
 
-    public FontAwesomeDrawable(Context context, int faIconRes, boolean isSolid, boolean isBrand) {
+    public FontAwesomeDrawable(Context context, String faIconRes, boolean isSolid, boolean isBrand) {
         super();
         init(context, faIconRes, isSolid, isBrand);
     }
 
-    private void init(Context context, int faIconRes, boolean isSolid, boolean isBrand) {
+    private void init(Context context, String faIconRes, boolean isSolid, boolean isBrand) {
         //Used to load and scale resource items
         mResources = context.getResources();
         //Definition of this drawables size
@@ -131,16 +134,20 @@ public class FontAwesomeDrawable extends Drawable {
         setTextColor(textColor != null ? textColor : ColorStateList.valueOf(0xFF000000));
         setRawTextSize(textSize);
 
-        Typeface tf = null;
+        Typeface tf;
         if (isSolid) {
-            tf = FontCache.get(context, FontCache.FA_FONT_SOLID);
+            tf = ResourcesCompat.getFont(context, R.font.fa_solid_900);
         } else if (isBrand) {
-            tf = FontCache.get(context, FontCache.FA_FONT_BRANDS);
+            tf = ResourcesCompat.getFont(context, R.font.fa_brands_400);
         } else {
-            tf = FontCache.get(context, FontCache.FA_FONT_REGULAR);
+            tf = ResourcesCompat.getFont(context, R.font.fa_regular_400);
         }
+
         setTypeface(tf, styleIndex);
-        setText(context.getString(faIconRes));
+
+        //setTextAppearance(context, R.style.fa_solid_900); // Geht
+        //setText(context.getString(faIconRes));
+        setText(Html.fromHtml(faIconRes));
     }
 
 

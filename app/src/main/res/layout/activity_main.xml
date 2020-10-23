@@ -3,7 +3,6 @@
 <!-- Note the xmlns:custom="http://schemas.android.com/apk/res-auto" -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,35 +12,36 @@
     android:padding="32sp"
     tools:context=".MainActivity">
 
-    <!-- Geht nur wenn compiled -->
-    <de.th.fontawesome.FontAwesomeTextView
-        xmlns:custom="http://schemas.android.com/apk/res-auto"
-        android:text="@string/fa_address_book"
-        android:textSize="24sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        custom:type="regular"/>
 
     <!-- Das Funzt -->
-    <!-- type = "solid", "regular" or "brand" -->
     <de.th.fontawesome.FontAwesomeView
         xmlns:custom="http://schemas.android.com/apk/res-auto"
-        android:text="@string/fa_bookmark"
-        android:textSize="36sp"
-        android:textColor="#EF073F"
+        android:id="@+id/viewFontAwesomeTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:tag="TEST"
-        custom:type="@string/fas_adjust"
+        android:textSize="46sp"
+        android:textColor="#4CAF50"
+        custom:faIcon="@string/fas_donate"
         />
 
+    <View android:background="#B1AEAE" android:layout_margin="20dp" android:layout_width="match_parent" android:layout_height="1dp"/>
 
-    <!-- Das funzt -->
-    <TextView
-        android:textSize="24sp"
-        android:text="@string/fa_address_book"
-        android:fontFamily="@font/fa_regular_400"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <!-- Das Funzt -->
+    <de.th.fontawesome.FontAwesomeButton
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/btnFontAwesomeTest"
+        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:padding="20dp"
+        android:text="DONATE"
+        android:textColor="#BA3131"
+        android:textSize="14sp"
+        custom:faIcon="@string/fas_donate"
+        custom:faIconColor="@color/colorAccent"
+        custom:faIconSize="36"
+        custom:faIconPadding="25"
+        custom:faIconAlignment="TOP"
+        tools:ignore="HardcodedText" />
+
 
 </LinearLayout>

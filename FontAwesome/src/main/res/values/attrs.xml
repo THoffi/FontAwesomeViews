@@ -3,6 +3,20 @@
 <!-- This declares attributes for the FontAwesome TextView -->
 <resources>
     <declare-styleable name="FontAwesome">
-        <attr name="type" format="string" />
+        <attr name="android:enabled" />
+        <attr name="android:text" />
+        <attr name="android:textColor" />
+        <attr name="android:textSize" />
+        <attr name="android:padding" />
+        <attr name="faIcon" format="string" />
+        <attr name="faIconColor" format="string" />
+        <attr name="faIconSize" format="string" />
+        <attr name="faIconPadding" format="string" />
+        <attr name="faIconAlignment" format="enum">
+            <enum name="LEFT" value="0"/>
+            <enum name="RIGHT" value="1"/>
+            <enum name="BOTTOM" value="2"/>
+            <enum name="TOP" value="3"/>
+        </attr>
     </declare-styleable>
 </resources>
