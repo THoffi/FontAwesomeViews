@@ -86,7 +86,7 @@ public class FontAwesomeButton extends FrameLayout {
 
             if (a.hasValue(R.styleable.FontAwesome_faIconSize)) {
                 flFaSize = a.getFloat(R.styleable.FontAwesome_faIconSize, 24);
-                if(flFaSize < 24) flFaSize = 24;
+                if(flFaSize < 12) flFaSize = 12;
             }
 
             if (a.hasValue(R.styleable.FontAwesome_faIconAlignment)) {
