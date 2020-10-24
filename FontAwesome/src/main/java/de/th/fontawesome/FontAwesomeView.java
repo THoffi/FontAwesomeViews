@@ -34,30 +34,38 @@ public class FontAwesomeView extends AppCompatTextView {
                 txt = a.getString(R.styleable.FontAwesome_faIcon);
             }
             a.recycle();
-            //if (type.equals("")) type = "regular";
         }
 
         assert txt != null;
-        String[] arr = txt.split("#");
-        //Log.e("arr.length", "" + arr.length);
-        if(arr.length < 2){
-            return;
-        }
-        //System.out.println("txt: " + arr[1]);
-
-        switch (arr[0]) {
-            case "solid":
-                setTextAppearance(context, R.style.fa_solid_900); // Geht
-                break;
-            case "brands":
-                setTextAppearance(context, R.style.fa_brands_400); // Geht
-                break;
-            default:
-                // "regular"
-                setTextAppearance(context, R.style.fa_regular_400); // Geht
-                break;
-        }
-
-        setText(Html.fromHtml("&#x" + arr[1] + ";"));
+        setFaText(context, txt);
     }
+
+    public void setFaIcon(Context context, int FaIcon, int FaIconColor){
+        String txt = context.getString(FaIcon);
+
+        setFaText(context, txt);
+        setTextColor(FaIconColor);
+    }
+
+    private void setFaText(Context context, String txt){
+        String[] arr = txt.split("#");
+
+        if(arr.length > 1){
+            switch (arr[0]) {
+                case "solid":
+                    setTextAppearance(context, R.style.fa_solid_900); // Geht
+                    break;
+                case "brands":
+                    setTextAppearance(context, R.style.fa_brands_400); // Geht
+                    break;
+                default:
+                    // "regular"
+                    setTextAppearance(context, R.style.fa_regular_400); // Geht
+                    break;
+            }
+
+            setText(Html.fromHtml("&#x" + arr[1] + ";"));
+        }
+    }
+
 }

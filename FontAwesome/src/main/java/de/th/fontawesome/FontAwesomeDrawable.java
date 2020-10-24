@@ -78,12 +78,13 @@ public class FontAwesomeDrawable extends Drawable {
             android.R.attr.textColor
     };
 
-    public FontAwesomeDrawable(Context context, String faIconRes, boolean isSolid, boolean isBrand) {
+    public FontAwesomeDrawable(Context context, int faIconRes, boolean isSolid, boolean isBrand) {
         super();
         init(context, faIconRes, isSolid, isBrand);
     }
 
-    private void init(Context context, String faIconRes, boolean isSolid, boolean isBrand) {
+    private void init(Context context, int faIconRes, boolean isSolid, boolean isBrand) {
+        String strFaIconRes = context.getString(faIconRes);
         //Used to load and scale resource items
         mResources = context.getResources();
         //Definition of this drawables size
@@ -134,20 +135,31 @@ public class FontAwesomeDrawable extends Drawable {
         setTextColor(textColor != null ? textColor : ColorStateList.valueOf(0xFF000000));
         setRawTextSize(textSize);
 
+        String[] arr = strFaIconRes.split("#");
+        //Log.e("arr.length", "" + arr.length);
+        if(arr.length < 2){
+            return;
+        }
+
         Typeface tf;
-        if (isSolid) {
-            tf = ResourcesCompat.getFont(context, R.font.fa_solid_900);
-        } else if (isBrand) {
-            tf = ResourcesCompat.getFont(context, R.font.fa_brands_400);
-        } else {
-            tf = ResourcesCompat.getFont(context, R.font.fa_regular_400);
+
+        switch (arr[0]) {
+            case "solid":
+                tf = ResourcesCompat.getFont(context, R.font.fa_solid_900);
+                break;
+            case "brands":
+                tf = ResourcesCompat.getFont(context, R.font.fa_brands_400);
+                break;
+            default:
+                // "regular"
+                tf = ResourcesCompat.getFont(context, R.font.fa_regular_400);
+                break;
         }
 
         setTypeface(tf, styleIndex);
 
-        //setTextAppearance(context, R.style.fa_solid_900); // Geht
-        //setText(context.getString(faIconRes));
-        setText(Html.fromHtml(faIconRes));
+        setText(Html.fromHtml("&#x" + arr[1] + ";"));
+
     }
 
 
