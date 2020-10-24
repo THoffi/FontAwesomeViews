@@ -7,8 +7,10 @@ import android.graphics.Color;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 // https://proandroiddev.com/custom-button-rehearsal-a3e0284d3e56
@@ -37,6 +39,7 @@ public class FontAwesomeButton extends FrameLayout {
         float TextSize = 18;
         String strTextSize;
         int padding = 10;
+        int gravity = Gravity.CENTER;
         String strPadding;
         float flFaSize = 24;
         String strFaPadding = "0";
@@ -53,6 +56,10 @@ public class FontAwesomeButton extends FrameLayout {
             if (a.hasValue(R.styleable.FontAwesome_android_textColor)) {
                 strTextColor = a.getString(R.styleable.FontAwesome_android_textColor);
             }
+
+        if (a.hasValue(R.styleable.FontAwesome_android_gravity)) {
+            gravity = a.getInt(R.styleable.FontAwesome_android_gravity, Gravity.CENTER);
+        }
 
             if (a.hasValue(R.styleable.FontAwesome_android_textSize)) {
                 strTextSize = a.getString(R.styleable.FontAwesome_android_textSize);
@@ -115,12 +122,15 @@ public class FontAwesomeButton extends FrameLayout {
 
         TextView txtIcon = view.findViewById(R.id.txtIcon);
         TextView txtText = view.findViewById(R.id.txtText);
+        LinearLayout lay = view.findViewById(R.id.layIcon);
 
         // +++ Set FrameLayout
         if(padding < 10) padding = 10;
         setPadding(padding,padding,padding,padding);
         setClickable(true);
         setFocusable(true);
+        // Gravity
+        lay.setGravity(gravity);
         // Click-Animation
         TypedValue outValue = new TypedValue();
         context.getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
