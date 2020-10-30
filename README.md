@@ -10,6 +10,9 @@ A simple library for using Font Awesome Icons for Android. Including 1602 free i
 
 <br>
 
+![umweltgefaehrdende-stoffe-12509-DIAs7-1477308418](https://user-images.githubusercontent.com/22442874/97678701-8c85e800-1a94-11eb-8ed8-c113d2e2b55a.jpg)
+<br>
+
 ## Prerequisites
 Add this in your root build.gradle file:
 ```java
