@@ -2,8 +2,7 @@
 Android FontAwesome Icon's integration
 
 
-
-<img src="https://img.shields.io/badge/API-16%2B-brightgreen.svg" style="max-width:100%;"> [![](https://jitpack.io/v/wRorsjakz/Android-NumPad.svg)](https://jitpack.io/#wRorsjakz/Android-NumPad) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+<img src="https://img.shields.io/badge/API-16%2B-brightgreen.svg" style="max-width:100%;"> [![](https://jitpack.io/v/THoffi/FontAwesomeViews.svg)](https://jitpack.io/#THoffi/FontAwesomeViews) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 A simplistic and easy to use number pad for Android.
 
@@ -28,7 +27,7 @@ Add this to your module's build.gradle file:
 ```java
 dependencies {
 	...
-		implementation 'com.github.wRorsjakz:Android-NumPad:1.0.1'
+		implementation 'com.github.THoffi:FontAwesomeViews:1.1.2'
 }
 ```
 
