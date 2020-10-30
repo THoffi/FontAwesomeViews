@@ -4,7 +4,7 @@ Android FontAwesome Icon's integration
 
 <img src="https://img.shields.io/badge/API-16%2B-brightgreen.svg" style="max-width:100%;"> [![](https://jitpack.io/v/THoffi/FontAwesomeViews.svg)](https://jitpack.io/#THoffi/FontAwesomeViews) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-A simplistic and easy to use number pad for Android.
+A simple library for using Font Awesome Icons for Android.
 
 <img src="https://user-images.githubusercontent.com/39665412/51075695-3fbbfc00-16ca-11e9-9d0f-e1b511716f19.png" width="35%">
 
@@ -76,6 +76,8 @@ Change color of numpad background
 
 * 1.0.1
 	* Initial Release
+* 1.1.3
+	* Stable Release
 
 
 ## License
