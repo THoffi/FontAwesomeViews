@@ -8,7 +8,8 @@ Android FontAwesome Icon's integration
 ### A simple library for using Font Awesome Icons for Android. Including 1602 free icons (as of 10/2020).
 
 <!-- from Issues -->
-<img src="https://user-images.githubusercontent.com/22442874/97678701-8c85e800-1a94-11eb-8ed8-c113d2e2b55a.jpg">
+![FontAwesome1](https://user-images.githubusercontent.com/22442874/97815915-d556c000-1c91-11eb-953c-598c4f38f984.gif)
+<!-- <img src="https://user-images.githubusercontent.com/22442874/97678701-8c85e800-1a94-11eb-8ed8-c113d2e2b55a.jpg"> -->
 <br>
 
 ## Prerequisites
