@@ -5,7 +5,7 @@ Android FontAwesome Icon's integration
 
 <img src="https://img.shields.io/badge/API-16%2B-brightgreen.svg" style="max-width:100%;"> [![](https://jitpack.io/v/THoffi/FontAwesomeViews.svg)](https://jitpack.io/#THoffi/FontAwesomeViews) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-### A simple library for using Font Awesome Icons for Android. Including 1602 free icons (as of 10/2020).
+### A simple library for using Font Awesome Icons for Android.<br>Including 1602 free icons (as of 10/2020).
 
 <!-- from Issues -->
 ![FontAwesome1](https://user-images.githubusercontent.com/22442874/97815915-d556c000-1c91-11eb-953c-598c4f38f984.gif)
