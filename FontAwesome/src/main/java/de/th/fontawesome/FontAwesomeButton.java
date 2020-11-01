@@ -2,20 +2,41 @@ package de.th.fontawesome;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.RippleDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
+import android.os.Build;
 import android.text.Html;
 import android.util.AttributeSet;
-import android.util.TypedValue;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
+import java.util.Arrays;
+
+// https://www.vogella.com/tutorials/AndroidCustomViews/article.html
+// Ripple
+// https://guides.codepath.com/android/ripple-animation
+// https://github.com/siriscac/RippleView/blob/master/RippleView/src/com/indris/material/RippleView.java
+
 // https://proandroiddev.com/custom-button-rehearsal-a3e0284d3e56
 // https://github.com/alex31n/NoboButton
 public class FontAwesomeButton extends FrameLayout {
+
+    //Context context;
+    LinearLayout lay;
+    View view;
 
     public FontAwesomeButton(Context context) {
         super(context);
@@ -31,11 +52,123 @@ public class FontAwesomeButton extends FrameLayout {
         super(context, attrs, defStyle);
         initView(context, attrs);
     }
+	
+	// https://github.com/siriscac/RippleView/blob/master/RippleView/src/com/indris/material/RippleView.java
+	// https://developer.android.com/training/gestures/viewgroup.html#intercept
 
+
+
+	@SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean onTouchEvent(final MotionEvent event) {
+
+		//Log.e("TouchEvent", String.valueOf(event.getActionMasked()));
+        boolean superResult = super.onTouchEvent(event);
+
+        //int x = (int) event.getX();
+        //int y = (int) event.getY();
+
+
+        int action = event.getActionMasked();
+
+        switch(action) {
+            case (MotionEvent.ACTION_DOWN) : // https://developer.android.com/reference/android/view/MotionEvent#ACTION_DOWN
+                Log.e("ACTION","Action was DOWN");
+                startAnim();
+                if (!superResult) return true;
+            case (MotionEvent.ACTION_MOVE) :
+                Log.e("ACTION", "moving:");
+                if (!superResult) return true;
+            case (MotionEvent.ACTION_UP) :
+                Log.e("ACTION","Action was UP");
+                if (!superResult) return true;
+            case (MotionEvent.ACTION_CANCEL) :
+                Log.e("ACTION","Action was CANCEL");
+                if (!superResult) return true;
+            case (MotionEvent.ACTION_OUTSIDE) :
+                Log.e("ACTION","Movement occurred outside bounds " +
+                        "of current screen element");
+                if (!superResult) return true;
+            default :
+                return superResult;
+        }
+	}
+
+
+    private void startAnim(){
+
+        /* Geht
+        Animation animation1 = new AlphaAnimation(0.3f, 1.0f);
+        animation1.setDuration(500);
+        startAnimation(animation1);
+         */
+
+        /* Geht
+        animate()
+                .setDuration(500)
+                .rotationYBy(360);
+        */
+
+
+        /* Geht
+        Animation myAnim = AnimationUtils.loadAnimation(this.getContext(), R.anim.bounce);
+        startAnimation(myAnim);
+         */
+
+        // Geht Ripple-Effect Geht ab Android 5, sonst Farbwechsel
+        // https://stackoverflow.com/questions/27787870/how-to-use-rippledrawable-programmatically-in-code-not-xml-with-android-5-0-lo
+        lay.setBackground(getAdaptiveRippleDrawable(Color.GREEN, Color.WHITE));
+
+        // ViewPropertyAnimator
+        // ObjectAnimator https://developer.android.com/guide/topics/graphics/prop-animation.html#listeners
+        // https://stackoverflow.com/questions/11633221/android-properties-that-can-be-animated-with-objectanimator
+        // https://stackoverflow.com/questions/56286790/ripple-animation-on-a-bitmap-instead-of-view
+
+        // Ripple
+        // https://github.com/balysv/material-ripple
+    }
+
+    private static Drawable getAdaptiveRippleDrawable(int normalColor, int pressedColor) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return new RippleDrawable(ColorStateList.valueOf(pressedColor),null, getRippleMask(normalColor));
+        } else {
+            return getStateListDrawable(normalColor, pressedColor);
+        }
+    }
+
+    private static Drawable getRippleMask(int color) {
+        float[] outerRadii = new float[8];
+        // 3 is radius of final ripple,
+        // instead of 3 you can give required final radius
+        Arrays.fill(outerRadii, 3);
+
+        RoundRectShape r = new RoundRectShape(outerRadii, null, null);
+        ShapeDrawable shapeDrawable = new ShapeDrawable(r);
+        shapeDrawable.getPaint().setColor(color);
+        return shapeDrawable;
+    }
+
+    private static StateListDrawable getStateListDrawable(
+            int normalColor, int pressedColor) {
+        StateListDrawable states = new StateListDrawable();
+        states.addState(new int[]{android.R.attr.state_pressed},
+                new ColorDrawable(pressedColor));
+        states.addState(new int[]{android.R.attr.state_focused},
+                new ColorDrawable(pressedColor));
+        states.addState(new int[]{android.R.attr.state_activated},
+                new ColorDrawable(pressedColor));
+        states.addState(new int[]{},
+                new ColorDrawable(normalColor));
+        return states;
+    }
+
+
+    @SuppressLint("Range")
     private void initView(Context context, AttributeSet attrs){
 
         String strText = "";
         String strTextColor = "#575454"; // Dunkelgrau
+        String strBackgroundColor = "#00ff0000"; // transparent
         float TextSize = 18;
         String strTextSize;
         int padding = 10;
@@ -57,9 +190,13 @@ public class FontAwesomeButton extends FrameLayout {
                 strTextColor = a.getString(R.styleable.FontAwesome_android_textColor);
             }
 
-        if (a.hasValue(R.styleable.FontAwesome_android_gravity)) {
-            gravity = a.getInt(R.styleable.FontAwesome_android_gravity, Gravity.CENTER);
-        }
+            if (a.hasValue(R.styleable.FontAwesome_android_background)) {
+                strBackgroundColor = a.getString(R.styleable.FontAwesome_android_background);
+            }
+
+            if (a.hasValue(R.styleable.FontAwesome_android_gravity)) {
+                gravity = a.getInt(R.styleable.FontAwesome_android_gravity, Gravity.CENTER);
+            }
 
             if (a.hasValue(R.styleable.FontAwesome_android_textSize)) {
                 strTextSize = a.getString(R.styleable.FontAwesome_android_textSize);
@@ -103,7 +240,6 @@ public class FontAwesomeButton extends FrameLayout {
         a.recycle();
 
         // +++ Set Inflate Layout
-        View view;
         assert faIconAlignment != null;
         switch (faIconAlignment) {
             case "3":
@@ -122,19 +258,21 @@ public class FontAwesomeButton extends FrameLayout {
 
         TextView txtIcon = view.findViewById(R.id.txtIcon);
         TextView txtText = view.findViewById(R.id.txtText);
-        LinearLayout lay = view.findViewById(R.id.layIcon);
+        lay = view.findViewById(R.id.layIcon); // Layout um txtIcon und txtText aussen herum
 
         // +++ Set FrameLayout
         if(padding < 10) padding = 10;
-        setPadding(padding,padding,padding,padding);
+        lay.setPadding(padding,padding,padding,padding);
         setClickable(true);
         setFocusable(true);
         // Gravity
         lay.setGravity(gravity);
-        // Click-Animation
-        TypedValue outValue = new TypedValue();
-        context.getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
-        setBackgroundResource(outValue.resourceId); // Animation bei Click
+        // Background
+        try {
+            setBackgroundColor(Color.parseColor(strBackgroundColor));
+        } catch (Exception e){
+            setBackgroundColor(Color.parseColor("#00ff0000")); // transparent
+        }
 
         // +++ Set txtText
         assert strText != null;
@@ -144,10 +282,12 @@ public class FontAwesomeButton extends FrameLayout {
         }else{
             txtText.setVisibility(GONE);
         }
-        assert strTextColor != null;
-        if(strTextColor.length() > 2) {
+        try {
             txtText.setTextColor(Color.parseColor(strTextColor)); // int
+        } catch (Exception e) {
+            txtText.setTextColor(Color.parseColor("#575454")); // grau
         }
+
         if(TextSize < 12) TextSize = 12;
         txtText.setTextSize(TextSize); // float
 
@@ -171,7 +311,11 @@ public class FontAwesomeButton extends FrameLayout {
         }
         // Rest
         txtIcon.setText(Html.fromHtml("&#x" + arr[1] + ";"));
-        txtIcon.setTextColor(Color.parseColor(strFaColor)); // int
+        try {
+            txtIcon.setTextColor(Color.parseColor(strFaColor)); // int
+        } catch (Exception e){
+            txtIcon.setTextColor(Color.parseColor("#575454")); // grau
+        }
         txtIcon.setTextSize(flFaSize); // float
         // IconAlignment
         int faPadding = Integer.parseInt(strFaPadding);

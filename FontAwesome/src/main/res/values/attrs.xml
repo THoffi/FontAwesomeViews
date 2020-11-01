@@ -5,10 +5,11 @@
     <declare-styleable name="FontAwesome">
         <attr name="android:enabled" />
         <attr name="android:text" />
-        <attr name="android:textColor" />
+        <attr name="android:textColor" format="color" />
         <attr name="android:textSize" />
         <attr name="android:padding" />
         <attr name="android:gravity" />
+        <attr name="android:background" />
         <attr name="faIcon" format="string" />
         <attr name="faIconColor" format="string" />
         <attr name="faIconSize" format="string" />
