@@ -49,7 +49,9 @@ Include the widget in your `xml` layout file:
       	custom:faIcon="@string/fa_building" />
 ```
 
-Set FontAwesome Icon for 'FontAwesomeView' programmatically:
+## Configuration
+
+Change FontAwesome-Icon and Color for 'FontAwesomeView' programmatically:
 
 ```java
 viewFaTest1.setFaIcon(context, R.string.fa_address_card, Color.RED);
@@ -57,7 +59,6 @@ viewFaTest1.setFaIcon(context, R.string.fa_address_card, Color.RED);
 
 `onNumpadClicked(ArrayList<Integer> nums)` returns a `ArrayList<Integer>` of numbers that the user has entered till then. If the user presses delete when the arraylist is already empty, then it returns an empty arraylist.
 
-## Configuration
 
 Change the color of the button text:
 ```java
