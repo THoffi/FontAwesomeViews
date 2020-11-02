@@ -34,14 +34,19 @@ dependencies {
 ```
 
 ## Usage
-
+### 1.FontAwesomeView
 Include the widget in your `xml` layout file:
 
 ```xml
-<com.example.numpad.NumPad
-        android:id="@+id/numpad_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+<de.th.fontawesome.FontAwesomeView
+	xmlns:custom="http://schemas.android.com/apk/res-auto"
+       	android:id="@+id/viewFaTest1"
+       	android:layout_width="wrap_content"
+     	android:layout_height="wrap_content"
+      	android:layout_margin="5dp"
+      	android:textSize="46sp"
+     	android:textColor="#4CAF50"
+      	custom:faIcon="@string/fa_building" />
 ```
 
 Instantiate the numpad widget:
