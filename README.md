@@ -49,16 +49,10 @@ Include the widget in your `xml` layout file:
       	custom:faIcon="@string/fa_building" />
 ```
 
-Instantiate the numpad widget:
+Set FontAwesome Icon for 'FontAwesomeView' programmatically:
 
 ```java
-NumPad numPad = findViewById(R.id.my_numpad);
-numPad.setOnNumPadClickListener(new NumPadClick(new numPadClickListener() {
-	@Override
-	public void onNumpadClicked(ArrayList<Integer> nums) {
-		Log.d("MYTAG", "onNumpadClicked: " + nums);
-	}
-}));
+viewFaTest1.setFaIcon(context, R.string.fa_address_card, Color.RED);
 ```
 
 `onNumpadClicked(ArrayList<Integer> nums)` returns a `ArrayList<Integer>` of numbers that the user has entered till then. If the user presses delete when the arraylist is already empty, then it returns an empty arraylist.
