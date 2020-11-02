@@ -29,7 +29,7 @@ Add this to your module's build.gradle file:
 ```java
 dependencies {
 	...
-		implementation 'com.github.THoffi:FontAwesomeViews:1.1.2'
+	implementation 'com.github.THoffi:FontAwesomeViews:1.1.2'
 }
 ```
 
