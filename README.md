@@ -33,9 +33,9 @@ dependencies {
 }
 ```
 
-
-# 1. FontAwesomeView
-
+---
+## 1. FontAwesomeView
+---
 ## Usage
 Include the widget in your `xml` layout file:
 
@@ -76,7 +76,9 @@ Change color of numpad background
 
 ```
 
-# 2. FontAwesomeButton
+---
+## 2. FontAwesomeButton
+---
 ## Usage
 
 
