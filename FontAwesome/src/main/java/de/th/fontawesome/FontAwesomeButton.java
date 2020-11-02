@@ -18,6 +18,9 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -37,6 +40,10 @@ public class FontAwesomeButton extends FrameLayout {
     //Context context;
     LinearLayout lay;
     View view;
+
+    int intAnimateEffect = 0;
+    int AnimateNormalColor = Color.parseColor("#575454");
+    int AnimatePressedColor = Color.parseColor("#575454");
 
     public FontAwesomeButton(Context context) {
         super(context);
@@ -68,56 +75,59 @@ public class FontAwesomeButton extends FrameLayout {
         //int x = (int) event.getX();
         //int y = (int) event.getY();
 
-
         int action = event.getActionMasked();
 
         switch(action) {
             case (MotionEvent.ACTION_DOWN) : // https://developer.android.com/reference/android/view/MotionEvent#ACTION_DOWN
-                Log.e("ACTION","Action was DOWN");
-                startAnim();
+                //Log.e("ACTION","Action was DOWN");
+                startAnim(intAnimateEffect);
                 if (!superResult) return true;
             case (MotionEvent.ACTION_MOVE) :
-                Log.e("ACTION", "moving:");
+                //Log.e("ACTION", "moving:");
                 if (!superResult) return true;
             case (MotionEvent.ACTION_UP) :
-                Log.e("ACTION","Action was UP");
+                //Log.e("ACTION","Action was UP");
                 if (!superResult) return true;
             case (MotionEvent.ACTION_CANCEL) :
-                Log.e("ACTION","Action was CANCEL");
+                //Log.e("ACTION","Action was CANCEL");
                 if (!superResult) return true;
             case (MotionEvent.ACTION_OUTSIDE) :
-                Log.e("ACTION","Movement occurred outside bounds " +
-                        "of current screen element");
+                //Log.e("ACTION","Movement occurred outside bounds of current screen element");
                 if (!superResult) return true;
             default :
                 return superResult;
         }
 	}
 
+    private void startAnim(int effect){
 
-    private void startAnim(){
+        lay.setBackground(null);
+        clearAnimation();
 
-        /* Geht
-        Animation animation1 = new AlphaAnimation(0.3f, 1.0f);
-        animation1.setDuration(500);
-        startAnimation(animation1);
-         */
-
-        /* Geht
-        animate()
-                .setDuration(500)
-                .rotationYBy(360);
-        */
-
-
-        /* Geht
-        Animation myAnim = AnimationUtils.loadAnimation(this.getContext(), R.anim.bounce);
-        startAnimation(myAnim);
-         */
-
-        // Geht Ripple-Effect Geht ab Android 5, sonst Farbwechsel
-        // https://stackoverflow.com/questions/27787870/how-to-use-rippledrawable-programmatically-in-code-not-xml-with-android-5-0-lo
-        lay.setBackground(getAdaptiveRippleDrawable(Color.GREEN, Color.WHITE));
+        switch (effect) {
+            case 1 :
+                // +++ Alpha
+                Animation animAlpha = new AlphaAnimation(0.3f, 1.0f);
+                animAlpha.setDuration(500);
+                startAnimation(animAlpha);
+                break;
+            case 2 :
+                // +++ RotationY
+                animate()
+                    .setDuration(500)
+                    .rotationYBy(360);
+                break;
+            case 3 :
+                // +++ Bounce
+                Animation animBounce = AnimationUtils.loadAnimation(this.getContext(), R.anim.bounce);
+                animBounce.setDuration(500);
+                startAnimation(animBounce);
+                break;
+            case 4 :
+                // +++ Ripple - Geht ab Android 5, sonst Farbwechsel https://stackoverflow.com/questions/27787870/how-to-use-rippledrawable-programmatically-in-code-not-xml-with-android-5-0-lo
+                lay.setBackground(getAdaptiveRippleDrawable(AnimateNormalColor, AnimatePressedColor));
+                break;
+        }
 
         // ViewPropertyAnimator
         // ObjectAnimator https://developer.android.com/guide/topics/graphics/prop-animation.html#listeners
@@ -168,7 +178,7 @@ public class FontAwesomeButton extends FrameLayout {
 
         String strText = "";
         String strTextColor = "#575454"; // Dunkelgrau
-        String strBackgroundColor = "#00ff0000"; // transparent
+        String strBackgroundColor = "#00FFFFFF"; // transparent
         float TextSize = 18;
         String strTextSize;
         int padding = 10;
@@ -178,6 +188,8 @@ public class FontAwesomeButton extends FrameLayout {
         String strFaPadding = "0";
         String strFaColor = "#575454"; // Dunkelgrau
         String faIconAlignment = "3"; // TOP
+        String strAnimateNormalColor = "#575454"; // Dunkelgrau
+        String strAnimatePressedColor = "#575454"; // Dunkelgrau
 
         // Attribute auslesen
         @SuppressLint("CustomViewStyleable") TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.FontAwesome);
@@ -237,6 +249,17 @@ public class FontAwesomeButton extends FrameLayout {
                 faIconAlignment = a.getString(R.styleable.FontAwesome_faIconAlignment);
             }
 
+            // Variable für Animation
+            if (a.hasValue(R.styleable.FontAwesome_faAnimateEffect)) {
+                intAnimateEffect = a.getInt(R.styleable.FontAwesome_faAnimateEffect, 0);
+            }
+            if (a.hasValue(R.styleable.FontAwesome_faAnimateNormalColor)) {
+                strAnimateNormalColor = a.getString(R.styleable.FontAwesome_faAnimateNormalColor);
+            }
+            if (a.hasValue(R.styleable.FontAwesome_faAnimatePressedColor)) {
+                strAnimatePressedColor = a.getString(R.styleable.FontAwesome_faAnimatePressedColor);
+            }
+
         a.recycle();
 
         // +++ Set Inflate Layout
@@ -272,6 +295,18 @@ public class FontAwesomeButton extends FrameLayout {
             setBackgroundColor(Color.parseColor(strBackgroundColor));
         } catch (Exception e){
             setBackgroundColor(Color.parseColor("#00ff0000")); // transparent
+        }
+
+        // +++ Colors Animate
+        try {
+            AnimateNormalColor = Color.parseColor(strAnimateNormalColor);
+        } catch (Exception e) {
+            AnimateNormalColor = Color.parseColor("#575454"); // Dunkelgrau
+        }
+        try {
+            AnimatePressedColor = Color.parseColor(strAnimatePressedColor);
+        } catch (Exception e) {
+            AnimatePressedColor = Color.parseColor("#575454"); // Dunkelgrau
         }
 
         // +++ Set txtText

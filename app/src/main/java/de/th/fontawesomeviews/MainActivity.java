@@ -27,11 +27,20 @@ public class MainActivity extends AppCompatActivity {
         context = this;
 
         // FontAwesomeButton with ClickListener
-        FontAwesomeButton faButton = findViewById(R.id.btnFontAwesomeTest);
-        faButton.setOnClickListener(new View.OnClickListener() {
+        FontAwesomeButton faButton1 = findViewById(R.id.btnFaDonate);
+        faButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"Hello Donate Button",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // FontAwesomeButton with ClickListener
+        FontAwesomeButton faButton2 = findViewById(R.id.btnFaRating);
+        faButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Hello Rating Button",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -48,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Set FontAwesome Icon with 'FontAwesomeDrawable' programmatically
-        de.th.fontawesome.FontAwesomeDrawable drawable = new de.th.fontawesome.FontAwesomeDrawable(this, R.string.fa_address_card, false, false);
+        de.th.fontawesome.FontAwesomeDrawable drawable = new de.th.fontawesome.FontAwesomeDrawable(this, R.string.fa_address_card);
         drawable.setTextColor(ContextCompat.getColor(this, android.R.color.white));
         fab.setImageDrawable(drawable);
 

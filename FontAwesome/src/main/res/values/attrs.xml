@@ -5,7 +5,7 @@
     <declare-styleable name="FontAwesome">
         <attr name="android:enabled" />
         <attr name="android:text" />
-        <attr name="android:textColor" format="color" />
+        <attr name="android:textColor" />
         <attr name="android:textSize" />
         <attr name="android:padding" />
         <attr name="android:gravity" />
@@ -20,5 +20,14 @@
             <enum name="BOTTOM" value="2"/>
             <enum name="TOP" value="3"/>
         </attr>
+        <attr name="faAnimateEffect" format="enum">
+            <enum name="NONE" value="0"/>
+            <enum name="ALPHA" value="1"/>
+            <enum name="ROTATION" value="2"/>
+            <enum name="BOUNCE" value="3"/>
+            <enum name="RIPPLE" value="4"/>
+        </attr>
+        <attr name="faAnimateNormalColor" format="string" />
+        <attr name="faAnimatePressedColor" format="string" />
     </declare-styleable>
 </resources>

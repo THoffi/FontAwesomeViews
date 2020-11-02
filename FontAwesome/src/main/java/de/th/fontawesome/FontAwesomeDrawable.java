@@ -20,35 +20,13 @@ import android.util.TypedValue;
 
 import androidx.core.content.res.ResourcesCompat;
 
-/*	+++ Beispiel +++
-	FloatingActionButton fab = findViewById(R.id.fab);
-	// using paper plane icon for FAB
-	de.th.fontawesome.FontAwesomeDrawable drawable = new de.th.fontawesome.FontAwesomeDrawable(this, R.string.fa_paper_plane_solid, true, false);
-	// white color to icon
-	drawable.setTextColor(ContextCompat.getColor(this, android.R.color.white));
-	fab.setImageDrawable(drawable);
-*/
-
-/**
- * A Drawable object that draws text.
- * A de.th.fontawesome.FontAwesomeDrawable accepts most of the same parameters that can be applied to
- * {@link android.widget.TextView} for displaying and formatting text.
- * <p>
- * Optionally, a {@link Path} may be supplied on which to draw the text.
- * <p>
- * A de.th.fontawesome.FontAwesomeDrawable has an intrinsic size equal to that required to draw all
- * the text it has been supplied, when possible.  In cases where a {@link Path}
- * has been supplied, the caller must explicitly call
- * {@link #setBounds(Rect) setBounds()} to provide the Drawable
- * size based on the Path constraints.
- */
-// https://github.com/devunwired/textdrawable/blob/master/sample/src/main/java/com/example/textdrawable/drawable/TextDrawable.java
 public class FontAwesomeDrawable extends Drawable {
 
-    /* Platform XML constants for typeface */
+    /* Platform XML constants for typeface
     private static final int SANS = 1;
     private static final int SERIF = 2;
     private static final int MONOSPACE = 3;
+    */
 
     /* Resources for scaling values to the given device */
     private Resources mResources;
@@ -78,12 +56,12 @@ public class FontAwesomeDrawable extends Drawable {
             android.R.attr.textColor
     };
 
-    public FontAwesomeDrawable(Context context, int faIconRes, boolean isSolid, boolean isBrand) {
+    public FontAwesomeDrawable(Context context, int faIconRes) {
         super();
-        init(context, faIconRes, isSolid, isBrand);
+        init(context, faIconRes);
     }
 
-    private void init(Context context, int faIconRes, boolean isSolid, boolean isBrand) {
+    private void init(Context context, int faIconRes) {
         String strFaIconRes = context.getString(faIconRes);
         //Used to load and scale resource items
         mResources = context.getResources();
