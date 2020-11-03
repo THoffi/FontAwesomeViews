@@ -46,8 +46,8 @@ Include the widget in your `xml` layout file:
        	android:layout_width="wrap_content"
      	android:layout_height="wrap_content"
       	android:layout_margin="5dp"
-      	android:textSize="46sp"
-     	android:textColor="#4CAF50"
+      	custom:faIconSize="46"
+        custom:faIconColor="#4CAF50"
       	custom:faIcon="@string/fa_building" />
 ```
 
