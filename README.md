@@ -41,14 +41,14 @@ Include the widget in your `xml` layout file:
 
 ```xml
 <de.th.fontawesome.FontAwesomeView
-	xmlns:custom="http://schemas.android.com/apk/res-auto"
-       	android:id="@+id/viewFaTest1"
-       	android:layout_width="wrap_content"
-     	android:layout_height="wrap_content"
-      	android:layout_margin="5dp"
-      	custom:faIconSize="46"
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/viewFaTest1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        custom:faIconSize="46"
         custom:faIconColor="#4CAF50"
-      	custom:faIcon="@string/fa_building" />
+        custom:faIcon="@string/fa_building" />
 ```
 
 ## Configuration
