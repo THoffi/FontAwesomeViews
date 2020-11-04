@@ -12,6 +12,12 @@
     android:padding="32sp"
     tools:context=".MainActivity">
 
+    <TextView
+        android:text="FontAwesomeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="HardcodedText" />
+
 
     <LinearLayout
         android:orientation="horizontal"
@@ -28,8 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:textSize="46sp"
-            android:textColor="#4CAF50"
+            custom:faIconSize="46"
+            custom:faIconColor="#4CAF50"
             custom:faIcon="@string/fa_building"
             />
 
@@ -40,26 +46,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:textSize="46sp"
-            android:textColor="@android:color/holo_purple"
+            custom:faIconSize="46"
+            custom:faIconColor="@android:color/holo_purple"
             custom:faIcon="@string/fa_envelope"
             />
 
     </LinearLayout>
 
-
-    <View android:background="#B1AEAE" android:layout_margin="20dp" android:layout_width="match_parent" android:layout_height="1dp"/>
-
+    <TextView
+        android:text="FontAwesomeButtom"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="HardcodedText" />
     <!-- FontAwesomeButton -->
     <!-- Note the xmlns:custom="http://schemas.android.com/apk/res-auto" -->
     <de.th.fontawesome.FontAwesomeButton
         xmlns:custom="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/btnFaDonate"
+        android:id="@+id/btnFaRipple"
         android:layout_height="wrap_content"
         android:layout_width="120dp"
         android:padding="1dp"
         android:background="#FDFCFC"
-        android:text="DONATE"
+        android:text="RIPPLE"
         android:textColor="@android:color/holo_purple"
         android:textSize="14sp"
         custom:faIcon="@string/fas_donate"
@@ -68,21 +77,20 @@
         custom:faIconPadding="25"
         custom:faIconAlignment="TOP"
         custom:faAnimateEffect="RIPPLE"
-        custom:faAnimateNormalColor="#FBFBFB"
-        custom:faAnimatePressedColor="#E49CF1"
+        custom:faAnimateColor="#E49CF1"
         tools:ignore="HardcodedText" />
 
     <!-- FontAwesomeButton -->
     <de.th.fontawesome.FontAwesomeButton
         xmlns:custom="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/btnFaRating"
+        android:id="@+id/btnFaRotation"
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:padding="1dp"
         android:background="#E8E4E4"
-        android:text="RATING"
-        android:textColor="#616160"
+        android:text="ROTATION"
+        android:textColor="#327777"
         android:textSize="18sp"
         android:gravity="start"
         custom:faIcon="@string/fa_star"
@@ -91,8 +99,51 @@
         custom:faIconPadding="28"
         custom:faIconAlignment="LEFT"
         custom:faAnimateEffect="ROTATION"
-        custom:faAnimateNormalColor="#BAB7B7"
-        custom:faAnimatePressedColor="#FBFBFB"
+        custom:faAnimateColor="#FBFBFB"
+        tools:ignore="HardcodedText" />
+
+    <!-- FontAwesomeButton -->
+    <de.th.fontawesome.FontAwesomeButton
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/btnFaBounce"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:padding="5dp"
+        android:background="#E8E4E4"
+        android:text="BOUNCE"
+        android:textColor="#3F51B5"
+        android:textSize="18sp"
+        android:gravity="start"
+        custom:faIcon="@string/fas_share_alt"
+        custom:faIconColor="#3F51B5"
+        custom:faIconSize="36"
+        custom:faIconPadding="28"
+        custom:faIconAlignment="BOTTOM"
+        custom:faAnimateEffect="BOUNCE"
+        custom:faAnimateColor="#FBFBFB"
+        tools:ignore="HardcodedText" />
+
+    <!-- FontAwesomeButton -->
+    <de.th.fontawesome.FontAwesomeButton
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/btnFaAlpha"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:padding="5dp"
+        android:background="#F6B5B5"
+        android:text="ALPHA"
+        android:textColor="#474443"
+        android:textSize="18sp"
+        android:gravity="start"
+        custom:faIcon="@string/fab_android"
+        custom:faIconColor="#046A61"
+        custom:faIconSize="36"
+        custom:faIconPadding="28"
+        custom:faIconAlignment="RIGHT"
+        custom:faAnimateEffect="ALPHA"
+        custom:faAnimateColor="#FBFBFB"
         tools:ignore="HardcodedText" />
 
     <!-- Floating Action button -->

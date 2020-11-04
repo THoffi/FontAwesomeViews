@@ -28,15 +28,20 @@ public class FontAwesomeView extends AppCompatTextView {
     public void init(Context context, AttributeSet attrs){
 
         String txt = "";
-        String strTextColor = "#575454"; // Dunkelgrau
+        String strFaColor = "#575454"; // Dunkelgrau
+		float flFaSize = 24;
 
         if (attrs != null) {
             @SuppressLint("CustomViewStyleable") TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.FontAwesome);
             if (a.hasValue(R.styleable.FontAwesome_faIcon)){
                 txt = a.getString(R.styleable.FontAwesome_faIcon);
             }
-            if (a.hasValue(R.styleable.FontAwesome_android_textColor)){
-                strTextColor = a.getString(R.styleable.FontAwesome_android_textColor);
+            if (a.hasValue(R.styleable.FontAwesome_faIconColor)) {
+                strFaColor = a.getString(R.styleable.FontAwesome_faIconColor);
+            }
+			if (a.hasValue(R.styleable.FontAwesome_faIconSize)) {
+                flFaSize = a.getFloat(R.styleable.FontAwesome_faIconSize, 24);
+                if(flFaSize < 12) flFaSize = 12;
             }
             a.recycle();
         }
@@ -45,17 +50,19 @@ public class FontAwesomeView extends AppCompatTextView {
         setFaText(context, txt);
         setPadding(5,5,5,5);
         try {
-            setTextColor(Color.parseColor(strTextColor)); // int
+            setTextColor(Color.parseColor(strFaColor)); // int
         } catch (Exception e) {
             setTextColor(Color.parseColor("#575454")); // grau
         }
+        setTextSize(flFaSize); // float
     }
 
-    public void setFaIcon(Context context, int FaIcon, int FaIconColor){
-        String txt = context.getString(FaIcon);
+    public void setFaIcon(Context context, int faIcon, int faIconColor, float faIconSize){
+        String txt = context.getString(faIcon);
 
         setFaText(context, txt);
-        setTextColor(FaIconColor);
+        setTextColor(faIconColor);
+        setTextSize(faIconSize); // float
     }
 
     private void setFaText(Context context, String txt){

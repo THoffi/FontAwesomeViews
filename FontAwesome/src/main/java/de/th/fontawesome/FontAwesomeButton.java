@@ -28,13 +28,6 @@ import android.widget.TextView;
 
 import java.util.Arrays;
 
-// https://www.vogella.com/tutorials/AndroidCustomViews/article.html
-// Ripple
-// https://guides.codepath.com/android/ripple-animation
-// https://github.com/siriscac/RippleView/blob/master/RippleView/src/com/indris/material/RippleView.java
-
-// https://proandroiddev.com/custom-button-rehearsal-a3e0284d3e56
-// https://github.com/alex31n/NoboButton
 public class FontAwesomeButton extends FrameLayout {
 
     //Context context;
@@ -59,10 +52,6 @@ public class FontAwesomeButton extends FrameLayout {
         super(context, attrs, defStyle);
         initView(context, attrs);
     }
-	
-	// https://github.com/siriscac/RippleView/blob/master/RippleView/src/com/indris/material/RippleView.java
-	// https://developer.android.com/training/gestures/viewgroup.html#intercept
-
 
 
 	@SuppressLint("ClickableViewAccessibility")
@@ -126,16 +115,14 @@ public class FontAwesomeButton extends FrameLayout {
             case 4 :
                 // +++ Ripple - Geht ab Android 5, sonst Farbwechsel https://stackoverflow.com/questions/27787870/how-to-use-rippledrawable-programmatically-in-code-not-xml-with-android-5-0-lo
                 lay.setBackground(getAdaptiveRippleDrawable(AnimateNormalColor, AnimatePressedColor));
+				// NEU
+				//lay.setBackground(RippDrawable.getSelectableDrawableFor(AnimatePressedColor));
                 break;
         }
 
         // ViewPropertyAnimator
         // ObjectAnimator https://developer.android.com/guide/topics/graphics/prop-animation.html#listeners
-        // https://stackoverflow.com/questions/11633221/android-properties-that-can-be-animated-with-objectanimator
-        // https://stackoverflow.com/questions/56286790/ripple-animation-on-a-bitmap-instead-of-view
 
-        // Ripple
-        // https://github.com/balysv/material-ripple
     }
 
     private static Drawable getAdaptiveRippleDrawable(int normalColor, int pressedColor) {
@@ -188,8 +175,8 @@ public class FontAwesomeButton extends FrameLayout {
         String strFaPadding = "0";
         String strFaColor = "#575454"; // Dunkelgrau
         String faIconAlignment = "3"; // TOP
-        String strAnimateNormalColor = "#575454"; // Dunkelgrau
-        String strAnimatePressedColor = "#575454"; // Dunkelgrau
+        //String strAnimateNormalColor = "#575454"; // Dunkelgrau
+        String strAnimateColor = "#575454"; // Dunkelgrau
 
         // Attribute auslesen
         @SuppressLint("CustomViewStyleable") TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.FontAwesome);
@@ -253,11 +240,8 @@ public class FontAwesomeButton extends FrameLayout {
             if (a.hasValue(R.styleable.FontAwesome_faAnimateEffect)) {
                 intAnimateEffect = a.getInt(R.styleable.FontAwesome_faAnimateEffect, 0);
             }
-            if (a.hasValue(R.styleable.FontAwesome_faAnimateNormalColor)) {
-                strAnimateNormalColor = a.getString(R.styleable.FontAwesome_faAnimateNormalColor);
-            }
-            if (a.hasValue(R.styleable.FontAwesome_faAnimatePressedColor)) {
-                strAnimatePressedColor = a.getString(R.styleable.FontAwesome_faAnimatePressedColor);
+            if (a.hasValue(R.styleable.FontAwesome_faAnimateColor)) {
+                strAnimateColor = a.getString(R.styleable.FontAwesome_faAnimateColor);
             }
 
         a.recycle();
@@ -299,12 +283,12 @@ public class FontAwesomeButton extends FrameLayout {
 
         // +++ Colors Animate
         try {
-            AnimateNormalColor = Color.parseColor(strAnimateNormalColor);
+            AnimateNormalColor = Color.parseColor(strBackgroundColor);
         } catch (Exception e) {
-            AnimateNormalColor = Color.parseColor("#575454"); // Dunkelgrau
+            AnimateNormalColor = Color.parseColor("#00ff0000"); // transparent
         }
         try {
-            AnimatePressedColor = Color.parseColor(strAnimatePressedColor);
+            AnimatePressedColor = Color.parseColor(strAnimateColor);
         } catch (Exception e) {
             AnimatePressedColor = Color.parseColor("#575454"); // Dunkelgrau
         }

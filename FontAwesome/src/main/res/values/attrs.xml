@@ -27,7 +27,6 @@
             <enum name="BOUNCE" value="3"/>
             <enum name="RIPPLE" value="4"/>
         </attr>
-        <attr name="faAnimateNormalColor" format="string" />
-        <attr name="faAnimatePressedColor" format="string" />
+        <attr name="faAnimateColor" format="string" />
     </declare-styleable>
 </resources>
