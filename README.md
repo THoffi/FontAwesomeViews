@@ -74,6 +74,7 @@ Include the widget in your `xml` layout file:
 ```xml
 <de.th.fontawesome.FontAwesomeButton
         xmlns:custom="http://schemas.android.com/apk/res-auto"
+	     ...
         android:id="@+id/btnFaRating"
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
@@ -135,6 +136,7 @@ set Drawable programmatically:
    ...
  de.th.fontawesome.FontAwesomeDrawable drawable = new de.th.fontawesome.FontAwesomeDrawable(this, R.string.fa_address_card);
  drawable.setTextColor(ContextCompat.getColor(this, android.R.color.white));
+ 
  fab.setImageDrawable(drawable);
    ...
 ```
