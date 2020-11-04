@@ -29,7 +29,7 @@ Add this to your module's build.gradle file:
 ```java
 dependencies {
 	...
-	implementation 'com.github.THoffi:FontAwesomeViews:1.1.2'
+	implementation 'com.github.THoffi:FontAwesomeViews:1.1.3'
 }
 ```
 
@@ -69,7 +69,75 @@ Change FontAwesome-Icon, Color and Size for 'FontAwesomeView' programmatically:
 ## 2. FontAwesomeButton
 ---
 ## Usage
+Include the widget in your `xml` layout file:
 
+```xml
+<de.th.fontawesome.FontAwesomeButton
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/btnFaRating"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="1dp"
+        android:background="#E8E4E4"
+        android:text="RATING"
+        android:textColor="#327777"
+        android:textSize="18sp"
+        android:gravity="start"
+	     ...
+        custom:faIcon="@string/fa_star"
+        custom:faIconColor="#FFC107"
+        custom:faIconSize="36"
+        custom:faIconPadding="28"
+        custom:faIconAlignment="LEFT"
+        custom:faAnimateEffect="ROTATION"
+        custom:faAnimateColor="#FBFBFB"
+	     ...
+        tools:ignore="HardcodedText" />
+```
+`faIconAlignment`
+* LEFT
+* RIGHT
+* BOTTOM
+* TOP
+
+`faAnimateEffect`
+* NONE
+* ALPHA
+* ROTATION
+* BOUNCE
+* RIPPLE
+
+## Configuration
+
+set ClickListener programmatically:
+```java
+ // FontAwesomeButton with ClickListener
+ FontAwesomeButton faButton1 = findViewById(R.id.btnFaDonate);
+ faButton1.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Toast.makeText(getApplicationContext(),"Hello Donate Button",Toast.LENGTH_SHORT).show();
+    }
+ });
+```
+
+---
+## 3. FontAwesome Drawable
+---
+
+## Configuration
+
+set Drawable programmatically:
+```java
+   ...
+ FloatingActionButton fab = findViewById(R.id.fab);
+   ...
+ de.th.fontawesome.FontAwesomeDrawable drawable = new de.th.fontawesome.FontAwesomeDrawable(this, R.string.fa_address_card);
+ drawable.setTextColor(ContextCompat.getColor(this, android.R.color.white));
+ fab.setImageDrawable(drawable);
+   ...
+```
 
 ## Changelog
 
