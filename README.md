@@ -28,7 +28,7 @@ Add this to your module's build.gradle file:
 ```java
 dependencies {
 	...
-	implementation 'com.github.THoffi:FontAwesomeViews:1.1.3'
+	implementation 'com.github.THoffi:FontAwesomeViews:1.1.4'
 }
 ```
 
@@ -144,7 +144,7 @@ set Drawable programmatically:
 
 * 1.0.1
 	* Initial Release
-* 1.1.3
+* 1.1.4
 	* Stable Release
 
 
