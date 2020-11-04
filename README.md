@@ -65,23 +65,6 @@ Change FontAwesome-Icon, Color and Size for 'FontAwesomeView' programmatically:
  viewFaTest1.setFaIcon(context, R.string.fa_address_card, Color.RED, 36);
 ```
 
-`onNumpadClicked(ArrayList<Integer> nums)` returns a `ArrayList<Integer>` of numbers that the user has entered till then. If the user presses delete when the arraylist is already empty, then it returns an empty arraylist.
-
-
-Change the color of the button text:
-```java
-numpad.setButtonTextColor(@NonNull Context context, @NonNull int colorId);
-```
-
-Change color of numpad background
-```xml
- <com.example.numpad.NumPad
- 		...
-        android:background="..."
-     />
-
-```
-
 ---
 ## 2. FontAwesomeButton
 ---
