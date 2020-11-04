@@ -55,10 +55,14 @@ Include the widget in your `xml` layout file:
 
 ## Configuration
 
-Change FontAwesome-Icon and Color for 'FontAwesomeView' programmatically:
+Change FontAwesome-Icon, Color and Size for 'FontAwesomeView' programmatically:
+```java
+ setFaIcon(Context context, int faIcon, int faIconColor, float faIconSize)
+```
 
 ```java
- viewFaTest1.setFaIcon(context, R.string.fa_address_card, Color.RED);
+ FontAwesomeView viewFaTest1 = findViewById(R.id.viewFaTest1);
+ viewFaTest1.setFaIcon(context, R.string.fa_address_card, Color.RED, 36);
 ```
 
 `onNumpadClicked(ArrayList<Integer> nums)` returns a `ArrayList<Integer>` of numbers that the user has entered till then. If the user presses delete when the arraylist is already empty, then it returns an empty arraylist.
