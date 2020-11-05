@@ -35,7 +35,7 @@ public class FontAwesomeButton extends FrameLayout {
     View view;
 
     int intAnimateEffect = 0;
-    int AnimateNormalColor = Color.parseColor("#575454");
+    int AnimateNormalColor = Color.parseColor("#FDFCFC"); // weiss
     int AnimatePressedColor = Color.parseColor("#575454");
 
     public FontAwesomeButton(Context context) {
@@ -285,7 +285,12 @@ public class FontAwesomeButton extends FrameLayout {
         try {
             AnimateNormalColor = Color.parseColor(strBackgroundColor);
         } catch (Exception e) {
-            AnimateNormalColor = Color.parseColor("#00ff0000"); // transparent
+            AnimateNormalColor = Color.parseColor("#FDFCFC"); // weiss
+        }
+        if(AnimateNormalColor == Color.parseColor("#00ff0000")){
+            // transparent
+            AnimateNormalColor = Color.parseColor("#FDFCFC"); // weiss
+
         }
         try {
             AnimatePressedColor = Color.parseColor(strAnimateColor);
